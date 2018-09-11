@@ -16,10 +16,10 @@ public class DemoApplication {
      * GET resource for testing.
      * @return String "Hello world!"
      */
-    @RequestMapping("/")
-    public String helloWorld() {
-        return "Hello world!";
-    }
+//    @RequestMapping("/")
+//    public String helloWorld() {
+//        return "Hello world!";
+//    }
 
     /**
      * Main function for the application. Starts the Spring application.
