@@ -1,4 +1,4 @@
-package ee.mmaemees.viinavaatlus;
+package ee.cs.ut.wad2018.viinavaatlus;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
