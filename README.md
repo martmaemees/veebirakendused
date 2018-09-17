@@ -1,4 +1,1 @@
 # Veebirakenduste projekt
-
-## I etapp
-
