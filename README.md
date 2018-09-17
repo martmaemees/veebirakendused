@@ -1,2 +1,3 @@
-# Veebirakenduste projekt
-midagi
+### Veebirakenduste projekt
+
+# I etapp
