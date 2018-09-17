@@ -11,7 +11,28 @@
 </head>
 <body>
     <nav class="navbar sticky-top navbar-light">
-        <a class="navbar-brand" href="#">Viinavaatlus</a>
+        <div>
+            <!--<img src="media/logo.svg" alt="Viinavaatluse logo" height="37px">-->
+
+            <svg height="37px" version="1.1" viewBox="0 0 67.992 66.987" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+                <g transform="translate(-26.974 -17.037)">
+                    <g transform="rotate(45.646 66.713 80.986)" fill="none" stroke="#000" stroke-linejoin="round" stroke-width="1.065">
+                        <path d="m41.01 20.51h-3.86l-0.1088 21.167-2.2375 2.6458h-4.7364l-1.7098 1.3229v52.639l1.4563 1.4563h11.196"/>
+                        <path d="m40.651 20.51h3.86l0.1088 21.167 2.2375 2.6458h4.7364l1.7098 1.3229v52.639l-1.4563 1.4563h-11.196"/>
+                    </g>
+                    <path d="m42.333 50.938 35.719-1e-6 -33.106 32.505-2.1447 0.013431-13.697-13.998-1.3229-1.3229v-2.6458" fill="#3e3e46" fill-opacity=".30172" stroke="#000" stroke-width=".26458px"/>
+                    <path d="m27.781 65.49 14.552-14.552" stroke="#000" stroke-width=".26458px"/>
+                    <g transform="translate(-64.823 -15.839)" fill="#fff" stroke="#000" stroke-width=".26458px">
+                        <path d="m145.52 66.812c-11.668-14.57-27.642-13.646-42.333 0"/>
+                        <path d="m145.52 66.777c-11.668 14.57-27.642 13.646-42.333 0"/>
+                    </g>
+                    <ellipse cx="60.847" cy="51.227" rx="7.276" ry="6.6146" fill="#0ff" stroke-linejoin="round" stroke-width="1.065"/>
+                    <circle cx="60.981" cy="51.087" r="1.9844" stroke-linejoin="round" stroke-width="1.065"/>
+                </g>
+            </svg>
+            
+            <a class="navbar-brand" href="#">Viinavaatlus</a>
+        </div>
         <form class="form-inline">
             <input class="form-control mr-sm-2" id="nav-search" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-light my-2 my-sm-0" type="submit">Search</button>
@@ -24,7 +45,8 @@
     </nav>
 
     <div class="container">
-
+        
+        
         <div th:replace="${content}">
             
         </div>
