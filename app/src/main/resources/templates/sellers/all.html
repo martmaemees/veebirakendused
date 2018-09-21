@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout(_, ~{::section})}" lang="en">
+<body>
+<section>
+    <ul>
+        <li th:each="seller : ${sellers}" th:text="${seller.getName()}"></li>
+    </ul>
+</section>
+</body>
+</html>

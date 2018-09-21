@@ -25,14 +25,20 @@ repositories {
 }
 
 dependencies {
-	compile 'org.springframework.boot:spring-boot-starter-security'
-	compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	compile 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+    runtime('org.postgresql:postgresql')
 
 	compileOnly 'org.projectlombok:lombok:1.18.2'
-	testCompile 'org.springframework.boot:spring-boot-starter-test'
-    testCompile 'org.springframework.security:spring-security-test'
-	
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+
+    // Needed when compiling with Java 9+, because Java EE API is deprecated for removal.
+    implementation 'javax.xml.bind:jaxb-api:2.3.0'
+
 	compile 'org.springframework.boot:spring-boot-devtools'
 }
 
