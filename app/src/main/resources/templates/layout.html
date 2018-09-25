@@ -43,8 +43,9 @@
         </form>
 
         <div>
-            <a class="btn btn-light" href="#">Login</a>
-            <a class="btn btn-light" href="#">Register</a>
+            <a class="btn btn-light" href="/auth/login" sec:authorize="!isAuthenticated()">Login / Register</a>
+            <a class="btn btn-light" href="/auth/logout" sec:authorize="isAuthenticated()">Logout</a>
+            <!--<a class="btn btn-light" href="#">Register</a>-->
         </div>
     </nav>
 

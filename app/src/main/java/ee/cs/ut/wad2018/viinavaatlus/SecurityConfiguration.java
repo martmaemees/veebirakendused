@@ -16,6 +16,21 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable();
 
         // By default allow requests to any URL
-        http.authorizeRequests().antMatchers("/**").permitAll();
+//        http.authorizeRequests().antMatchers("/**").permitAll();
+//        http.authorizeRequests().anyRequest().authenticated().and().oauth2Login();
+        http.authorizeRequests().antMatchers("/", "/auth/login/**").permitAll()
+                .and()
+                // Static files.
+                .authorizeRequests().antMatchers("/css/**", "/js/**", "/media/**").permitAll()
+                .and()
+                .authorizeRequests().anyRequest().authenticated()
+                .and()
+                .logout()
+                    .logoutUrl("/auth/logout")
+                    .logoutSuccessUrl("/")
+                .and()
+                .oauth2Login()
+                    .loginPage("/auth/login")
+                    .authorizationEndpoint().baseUri("/auth/login/oauth2");
     }
 }
