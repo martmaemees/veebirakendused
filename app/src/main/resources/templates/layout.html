@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout (title, content)">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout (title, content)"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -59,7 +60,12 @@
         <!-- footer -->
     </div>
 
-    <script type="application/javascript" src="/js/jquery-3.3.1.min.js"></script>
+    <script type="application/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script>
+        if (typeof jQuery === 'undefined') {
+            document.write('<script type="application/javascript" src="/js/jquery-3.3.1.slim.min.js">\x3C/script>');
+        }
+    </script>
     <script type="application/javascript" src="/js/popper.min.js"></script>
     <script type="application/javascript" src="/js/bootstrap.min.js"></script>
     <script type="application/javascript" src="/js/main.js"></script>
