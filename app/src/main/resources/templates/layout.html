@@ -62,6 +62,7 @@
 
     <script type="application/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script>
+        // https://www.hanselman.com/blog/CDNsFailButYourScriptsDontHaveToFallbackFromCDNToLocalJQuery.aspx
         if (typeof jQuery === 'undefined') {
             document.write('<script type="application/javascript" src="/js/jquery-3.3.1.slim.min.js">\x3C/script>');
         }
