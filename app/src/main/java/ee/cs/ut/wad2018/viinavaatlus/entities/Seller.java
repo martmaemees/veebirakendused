@@ -1,6 +1,8 @@
 package ee.cs.ut.wad2018.viinavaatlus.entities;
 
+import ee.cs.ut.wad2018.viinavaatlus.dtos.SellerDTO;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
@@ -13,6 +15,7 @@ import javax.validation.constraints.NotNull;
 @SuppressWarnings("checkstyle:magicnumber")
 @Getter
 @Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "sellers")
 public class Seller {
@@ -40,4 +43,17 @@ public class Seller {
     @Length(max = 255)
     private String website;
 
+    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+    private SellerImage image;
+
+    public Seller(SellerDTO dto) {
+        this.name = dto.getName();
+        this.description = dto.getDescription();
+        this.address = dto.getAddress();
+        this.phone = dto.getPhone();
+        this.email = dto.getEmail();
+        this.website = dto.getWebsite();
+    }
+
 }
+

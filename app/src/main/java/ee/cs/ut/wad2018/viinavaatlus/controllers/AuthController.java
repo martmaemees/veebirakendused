@@ -1,7 +1,5 @@
 package ee.cs.ut.wad2018.viinavaatlus.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +15,9 @@ public class AuthController {
 
     @GetMapping(path = "login")
     public String loginPage(OAuth2AuthenticationToken authentication) {
-        if (authentication != null && authentication.isAuthenticated())
+        if (authentication != null && authentication.isAuthenticated()) {
             return "redirect:/";
+        }
         return "auth/login";
     }
 
