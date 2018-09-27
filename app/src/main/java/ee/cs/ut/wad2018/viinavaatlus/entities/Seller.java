@@ -26,6 +26,10 @@ public class Seller {
 
     @Length(max = 255)
     @NotNull
+    private String ownerId;
+
+    @Length(max = 255)
+    @NotNull
     private String name;
 
     @Lob

@@ -7,11 +7,13 @@ import ee.cs.ut.wad2018.viinavaatlus.repositories.SellerImageRepository;
 import ee.cs.ut.wad2018.viinavaatlus.repositories.SellerRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.*;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.security.Principal;
 import java.util.Optional;
 
 @Slf4j
@@ -65,7 +67,7 @@ public class SellerController {
     }
 
     @PostMapping()
-    public String createNewSeller(@ModelAttribute SellerDTO data) {
+    public String createNewSeller(@ModelAttribute SellerDTO data, Principal principal) {
         Seller entity = new Seller(data);
         SellerImage imageEntity;
         try {
@@ -74,6 +76,16 @@ public class SellerController {
             log.warn("Failed to create a SellerImage");
             return "redirect:/sellers"; // TODO: Redirect back to referrer here.
         }
+
+        if (principal instanceof OAuth2AuthenticationToken) {
+            OAuth2AuthenticationToken auth = (OAuth2AuthenticationToken) principal;
+            if (sellerRepository.existsByOwnerId((String) auth.getPrincipal().getAttributes().get("email"))) {
+                return "redirect:/"; // TODO: Redirect to owned seller detail page, with error message
+            } else {
+                entity.setOwnerId((String) auth.getPrincipal().getAttributes().get("email"));
+            }
+        }
+
         entity.setImage(imageEntity);
         sellerRepository.save(entity);
 

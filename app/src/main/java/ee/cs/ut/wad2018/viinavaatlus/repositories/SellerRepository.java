@@ -16,4 +16,6 @@ public interface SellerRepository extends JpaRepository<Seller, Long> {
     @Query(value = "SELECT * FROM sellers WHERE id = :id", nativeQuery = true)
     Optional<Seller> findById(@Param("id") Long id);
 
+    boolean existsByOwnerId(String ownerId);
+
 }
