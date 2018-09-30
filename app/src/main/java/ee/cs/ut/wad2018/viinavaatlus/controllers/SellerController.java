@@ -5,6 +5,7 @@ import ee.cs.ut.wad2018.viinavaatlus.entities.Seller;
 import ee.cs.ut.wad2018.viinavaatlus.entities.SellerImage;
 import ee.cs.ut.wad2018.viinavaatlus.repositories.SellerImageRepository;
 import ee.cs.ut.wad2018.viinavaatlus.repositories.SellerRepository;
+import javassist.NotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.*;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
@@ -42,13 +43,6 @@ public class SellerController {
         return "sellers/testForm";
     }
 
-    @GetMapping(path = "{id}")
-    public String getDetails(@PathVariable Long id, Model model) {
-        Optional<Seller> seller = sellerRepository.findById(id);
-        model.addAttribute("seller", seller);
-        return "sellers/details";
-    }
-
     @GetMapping(path = "{id}/image")
     public ResponseEntity<byte[]> getImage(@PathVariable Long id) {
         Optional<SellerImage> image = sellerImageRepository.findBySellerId(id);
@@ -64,6 +58,16 @@ public class SellerController {
                 headers,
                 HttpStatus.OK
         );
+    }
+
+    @GetMapping(path = "{id]")
+    public String getDetails(@PathVariable Long id, Model model) {
+        Optional<Seller> entity = sellerRepository.findById(id);
+        if (!entity.isPresent()) {
+            return "redirect:/"; //TODO: Show error message here.
+        }
+        model.addAttribute("seller", new SellerDTO(entity.get()));
+        return "sellers/details";
     }
 
     @PostMapping()
