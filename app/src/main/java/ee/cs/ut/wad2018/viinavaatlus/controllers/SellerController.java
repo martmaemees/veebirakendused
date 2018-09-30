@@ -140,7 +140,7 @@ public class SellerController {
         }
 
         entity.setImage(imageEntity);
-        sellerRepository.save(entity);
+        sellerRepository.saveAndFlush(entity);
 
         return "redirect:/sellers/" + entity.getId(); // TODO: Redirect to detail view.
     }
