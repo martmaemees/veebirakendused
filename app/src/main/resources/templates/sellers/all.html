@@ -6,6 +6,9 @@
     <ul>
         <li th:each="seller : ${sellers}" th:text="${seller.getName()}"></li>
     </ul>
+    <p>
+        Total: <span th:text="${sellerCount}"></span>
+    </p>
 </section>
 </body>
 </html>

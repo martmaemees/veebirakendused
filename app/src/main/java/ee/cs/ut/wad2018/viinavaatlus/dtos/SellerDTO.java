@@ -2,6 +2,7 @@ package ee.cs.ut.wad2018.viinavaatlus.dtos;
 
 import ee.cs.ut.wad2018.viinavaatlus.entities.Seller;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -9,6 +10,7 @@ import java.util.Optional;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class SellerDTO {
 
     private Long id;

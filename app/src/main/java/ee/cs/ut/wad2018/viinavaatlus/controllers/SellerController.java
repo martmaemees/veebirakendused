@@ -5,7 +5,6 @@ import ee.cs.ut.wad2018.viinavaatlus.entities.Seller;
 import ee.cs.ut.wad2018.viinavaatlus.entities.SellerImage;
 import ee.cs.ut.wad2018.viinavaatlus.repositories.SellerImageRepository;
 import ee.cs.ut.wad2018.viinavaatlus.repositories.SellerRepository;
-import javassist.NotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.*;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
@@ -34,6 +33,7 @@ public class SellerController {
     @GetMapping()
     public String showAllSellers(Model model) {
         model.addAttribute("sellers", sellerRepository.findAll());
+        model.addAttribute("sellerCount", sellerRepository.countSellers());
         return "sellers/all";
     }
 
@@ -46,6 +46,9 @@ public class SellerController {
     @GetMapping(path = "{id}/image")
     public ResponseEntity<byte[]> getImage(@PathVariable Long id) {
         Optional<SellerImage> image = sellerImageRepository.findBySellerId(id);
+        if (!image.isPresent()) {
+            return ResponseEntity.notFound().build(); // FIXME: This doesn't return the /error page.
+        }
         HttpHeaders headers = new HttpHeaders();
         if (image.isPresent() && !image.get().getFileName().isEmpty()) {
             headers.setContentDisposition(ContentDisposition.builder("inline")
@@ -60,7 +63,7 @@ public class SellerController {
         );
     }
 
-    @GetMapping(path = "{id]")
+    @GetMapping(path = "{id}")
     public String getDetails(@PathVariable Long id, Model model) {
         Optional<Seller> entity = sellerRepository.findById(id);
         if (!entity.isPresent()) {
