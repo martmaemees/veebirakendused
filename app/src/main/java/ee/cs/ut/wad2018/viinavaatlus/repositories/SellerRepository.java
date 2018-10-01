@@ -23,7 +23,10 @@ public interface SellerRepository extends JpaRepository<Seller, Long> {
      * Executes an INSERT statement in the database, saving the {@link Seller} to the sellers table.
      * If the Seller has a {@link ee.cs.ut.wad2018.viinavaatlus.entities.SellerImage} attached to it that isn't saved,
      * also executes an INSERT statement for that.
-     * @return Returnes the saved Seller entity with updated data.
+     *
+     * SQL: insert into sellers (address, description, email, image_id, name, owner_id, phone, website)
+     *      values (?, ?, ?, ?, ?, ?, ?, ?)
+     * @return Returns the saved Seller entity with updated data.
      */
     @Override
     <S extends Seller> S saveAndFlush(S entity);

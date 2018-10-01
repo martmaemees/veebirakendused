@@ -21,7 +21,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/", "/auth/login/**").permitAll()
                 .and()
                 // Static files.
-                .authorizeRequests().antMatchers("/css/**", "/js/**", "/media/**").permitAll()
+                .authorizeRequests().antMatchers("favicon.ico", "/css/**", "/js/**", "/media/**").permitAll()
                 .and()
                 .authorizeRequests().anyRequest().authenticated()
                 .and()

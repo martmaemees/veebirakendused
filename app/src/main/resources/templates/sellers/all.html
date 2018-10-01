@@ -4,8 +4,9 @@
 <body>
 <section>
     <ul>
-        <li th:each="seller : ${sellers}" th:text="${seller.getName()}"></li>
+        <li th:each="seller:${sellers}" th:text="${seller.getName()}"></li>
     </ul>
+    <img th:each="seller:${sellers}" th:src="'/sellers/' + ${seller.getId()} + '/image'" alt="">
     <p>
         Total: <span th:text="${sellerCount}"></span>
     </p>
